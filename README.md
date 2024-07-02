@@ -1,0 +1,1 @@
+Simple Django To-Do app. You can add, edit or delete your task. 

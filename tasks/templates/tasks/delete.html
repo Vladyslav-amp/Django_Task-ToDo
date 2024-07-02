@@ -1,0 +1,109 @@
+<!-- delete.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Confirmation</title>
+  <style>
+    .modal {
+      display: flex;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+      max-width: 400px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .modal-content button:hover {
+      background-color: #0056b3;
+    }
+
+    .modal-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .delete-text {
+      font-size: 26px;
+    }
+
+    .btn-delete {
+      padding: 15px 50px;
+      border-radius: 8px;
+      border: none;
+      background-color: red;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .btn-delete:hover,
+    .btn-cancel:hover {
+      box-shadow: 0px 0px 51px -8px rgba(45, 45, 52, 1);
+    }
+
+    .btn-cancel {
+      padding: 15px 50px;
+      border-radius: 8px;
+      border: none;
+      background-color: #0056b3;
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="modal">
+    <div class="modal-content">
+      <p class="delete-text">Are you sure you want to delete your task "{{ item }}"?</p>
+      <div>
+        <div class="modal-buttons">
+          <a href="{% url 'list' %}" class="btn-cancel">Cancel</a>
+          <form method="POST" action="">
+            {% csrf_token %}
+            <input type="submit" name="confirm" value="Delete" class="btn-delete">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
