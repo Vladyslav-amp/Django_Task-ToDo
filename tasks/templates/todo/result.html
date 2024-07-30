@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .color-box {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            vertical-align: middle;
+            border-radius: 4px;
+        }
+        a {
+            color: #77aaff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .color-box {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            vertical-align: middle;
+            border: 1px solid #000;
+        }
+        .color-box-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <h1>Result</h1>
+      <p>Description: {{ result.description }}</p>
+      <p>Dominant Colors:</p>
+      <div class="color-box-wrapper">
+          {% for color in result.colors %}
+              <div class="color-box" style="background-color: {{ color.hex }}"></div>
+              <span>{{ color.hex }}</span>
+          {% endfor %}
+      </div>
+      <a href="{% url 'upload_image' %}">Upload another image</a>
+      <a class="button" href="{% url 'task_list' %}">Home</a>
+    </div>
+</body>
+</html>
